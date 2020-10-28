@@ -1,5 +1,20 @@
 const puppeteer = require('puppeteer');
 const fs = require("fs");
+const mysql = require('mysql');
+
+const request = require('request');
+function FieldsCreate(data)
+{
+    request.post({
+      headers: {'content-type': 'application/json'},
+      url: 'https://timona.edu.vn/index.php?option=com_timona&task=Lichhen.FieldsCreate&format=raw',
+      form: data
+  }, function(error, response, body){
+    console.log(body)
+
+  });
+
+}
 (async () => {
   const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
@@ -13,6 +28,18 @@ const fs = require("fs");
   await page.waitForSelector('a[data-search="theo ngay"]');
   await page.click('a[data-search="theo ngay"]');
   await navigationPromise;
+  await page.waitForSelector('#date');
+  await page.click('#date');
+  await page.waitForSelector('span[aria-label="October 27, 2020"]');
+  await page.click('span[aria-label="October 27, 2020"]');
+  await page.waitForSelector('#date');
+  await page.click('#date');
+  await page.waitForSelector('span[aria-label="October 27, 2020"]');
+  await page.click('span[aria-label="October 27, 2020"]');
+  await page.waitForSelector('span[aria-label="October 27, 2020"]');
+  await page.click('span[aria-label="October 27, 2020"]');
+
+
   await page.waitForSelector('#dtContentAppointmentByDayListBody tr');
   const lhs = await page.evaluate(() => {
     let trs = document.querySelectorAll("#dtContentAppointmentByDayListBody tr");
@@ -43,22 +70,21 @@ const fs = require("fs");
             }
           }
         )
-        //links.push(JSON.stringify(data));
-      // links.push({
-      //   title: item.innerHTML,
-      // });
       links.push('{'+links1+'}');
     });
-    links2.push('['+links+']');
-    return links2;
+    //links2.push('['+links+']');
+    return links;
   });
 
-  await fs.writeFile(`dulieu.json`, lhs, function(err) {
-    if (err) throw err;
-    console.log("Luu Thanh Cong");
-  });
-  console.log(lhs);
-
+  // await fs.writeFile(`dulieu.json`, lhs, function(err) {
+  //   if (err) throw err;
+  //   console.log("Luu Thanh Cong");
+  // });
+  //console.log(lhs);
+  lhs.forEach(function(value, index){
+      FieldsCreate(value);
+       // console.log(index+'-'+value);
+});
 
   // await browser.close();
 
