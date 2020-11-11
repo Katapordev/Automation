@@ -27,17 +27,39 @@ function FieldsCreate(data)
   await navigationPromise;
   await page.waitForSelector('a[data-search="theo ngay"]');
   await page.click('a[data-search="theo ngay"]');
+
   await navigationPromise;
+
+  await page.waitForSelector('#ScheduleStatus');
+  await page.click('#ScheduleStatus');
+
+  await page.waitForSelector('#cbbAppoinmentStatus div[data-value="6"]');
+  await page.click('#cbbAppoinmentStatus div[data-value="6"]');
+
+
   await page.waitForSelector('#date');
   await page.click('#date');
-  await page.waitForSelector('span[aria-label="October 27, 2020"]');
-  await page.click('span[aria-label="October 27, 2020"]');
+
+  //await page.waitForSelector('.flatpickr-prev-month');
+  //await page.click('.flatpickr-prev-month');
+
+  await page.waitForSelector('span[aria-label="November 10, 2020"]');
+  await page.click('span[aria-label="November 10, 2020"]');
   await page.waitForSelector('#date');
   await page.click('#date');
-  await page.waitForSelector('span[aria-label="October 27, 2020"]');
-  await page.click('span[aria-label="October 27, 2020"]');
-  await page.waitForSelector('span[aria-label="October 27, 2020"]');
-  await page.click('span[aria-label="October 27, 2020"]');
+  await page.waitForSelector('span[aria-label="November 10, 2020"]');
+  await page.click('span[aria-label="November 10, 2020"]');
+  await page.waitForSelector('span[aria-label="November 10, 2020"]');
+  await page.click('span[aria-label="November 10, 2020"]');
+
+
+
+  await page.waitForSelector('#ScheduleStatus');
+  await page.click('#ScheduleStatus');
+
+  await page.waitForSelector('#cbbAppoinmentStatus div[data-value="8"]');
+  await page.click('#cbbAppoinmentStatus div[data-value="8"]');
+
 
 
   await page.waitForSelector('#dtContentAppointmentByDayListBody tr');
@@ -50,6 +72,9 @@ function FieldsCreate(data)
         let tds= item.querySelectorAll('td');
           tds.forEach(function(value, index) {
             switch(index) {
+              case 4:
+                links1.push('"field6":"'+value.querySelector('span:first-child').textContent.trim()+'"');
+                   break;             
               case 6:
                 links1.push('"field1":"'+value.textContent.trim()+'"');
                 break;
@@ -83,9 +108,8 @@ function FieldsCreate(data)
   //console.log(lhs);
   lhs.forEach(function(value, index){
       FieldsCreate(value);
-       // console.log(index+'-'+value);
 });
 
-  // await browser.close();
+ //  await browser.close();
 
 })();
