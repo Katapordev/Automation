@@ -8,12 +8,16 @@ const request = require('request');
   const navigationPromise = page.waitForNavigation()
   page.setViewport({ width: 1280, height:720 });
   const mang =  [
-    { "name" : "báo chí nói về taza spa" , "link" : 0 },
-    { "name" : "taza spa triệt lông" , "link" : 0 },
-    { "name" : "taza spa tri mun" , "link" : 0 },
-    { "name" : "cang chi taza spa" , "link" : 0 },
+    // { "name" : "báo chí nói về taza spa" , "link" : 0 },
+     { "name" : "taza spa triệt lông" , "link" : 0 },
+     { "name" : "taza spa tri mun" , "link" : 0 },
+     { "name" : "cang chi taza spa" , "link" : 0 },
+     { "name" : "taza spa baby face" , "link" : 0 },
+    { "name" : "taza spa sẹo rỗ" , "link" : 0 },
     { "name" : "taza spa huy mo" , "link" : 0 },
-    { "name" : "taza spa baby face" , "link" : 0 }
+    { "name" : "taza spa trị nám" , "link" : 1 }
+   
+  
     ] 
  for(;;)
  {
@@ -26,6 +30,7 @@ const request = require('request');
   await navigationPromise;
   await page.waitForSelector('.yuRUbf')
   const pullovers = await page.$$('.yuRUbf')
+  await page.waitForSelector('.yuRUbf')
   await pullovers[mang[random].link].click()
   await page.waitForTimeout(3000);
   await autoScroll(page);
@@ -47,7 +52,7 @@ async function autoScroll(page){
                   clearInterval(timer);
                   resolve();
               }
-          }, 500);
+          }, 300);
       });
   });
 }
