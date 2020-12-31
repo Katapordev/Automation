@@ -3,15 +3,15 @@ const puppeteer = require('puppeteer');
 (async () => {
 
   const mang =  [
-    // { "name" : "báo chí nói về taza spa" , "link" : 0 },
-     { "name" : "taza spa triệt lông" , "link" : 0 },
-     { "name" : "taza spa tri mun" , "link" : 0 },
-     { "name" : "cang chi taza spa" , "link" : 0 },
-     { "name" : "taza spa baby face" , "link" : 0 },
-    { "name" : "taza spa sẹo rỗ" , "link" : 0 },
-    { "name" : "taza spa huy mo" , "link" : 0 },
-    //{ "name" : "taza spa trị nám" , "link" : 1 }
-    ] 
+    { "name" : "timona noi mi" , "link" : 0 },
+    { "name" : "timona phun xam" , "link" : 2 },
+     { "name" : "timona dieu tri da" , "link" : 0 },
+    { "name" : "timona dieu tri da nang cao" , "link" : 0 },
+    { "name" : "timona chu spa " , "link" : 1 },
+   { "name" : "timona hoc nghe spa" , "link" : 1 },
+    { "name" : "chi phi hoc nghe spa" , "link" : 7 }
+   //{ "name" : "taza spa trị nám" , "link" : 2 }
+   ] 
 
 for(;;)
 {

@@ -43,14 +43,14 @@ function FieldsCreate(data)
   //await page.waitForSelector('.flatpickr-prev-month');
   //await page.click('.flatpickr-prev-month');
 
-  await page.waitForSelector('span[aria-label="November 10, 2020"]');
-  await page.click('span[aria-label="November 10, 2020"]');
+  await page.waitForSelector('span[aria-label="November 23, 2020"]');
+  await page.click('span[aria-label="November 23, 2020"]');
   await page.waitForSelector('#date');
   await page.click('#date');
-  await page.waitForSelector('span[aria-label="November 10, 2020"]');
-  await page.click('span[aria-label="November 10, 2020"]');
-  await page.waitForSelector('span[aria-label="November 10, 2020"]');
-  await page.click('span[aria-label="November 10, 2020"]');
+  await page.waitForSelector('span[aria-label="November 23, 2020"]');
+  await page.click('span[aria-label="November 23, 2020"]');
+  await page.waitForSelector('span[aria-label="November 23, 2020"]');
+  await page.click('span[aria-label="November 23, 2020"]');
 
 
 
